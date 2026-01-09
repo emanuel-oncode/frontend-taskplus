@@ -1,0 +1,56 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="Login">
+  <section class="w-full h-screen flex items-center">
+    <div
+      class="w-full min-h-125 bg-green-300 max-w-xl mx-auto shadow-xl
+      rounded-2xl flex flex-col justify-around p-10"
+    >
+      <h1 class="text-center text-5xl font-bold">Login</h1>
+      <form
+        action="POST"
+        class="h-full overflow-hidden flex flex-col justify-center
+      gap-4 py-10 px-2 border-b-2 border-neutral-700"
+      >
+        <div class="flex flex-col gap-1">
+          <label for="user_email" class="text-neutral-700 font-bold"
+            >Email:
+          </label>
+          <input
+            type="email"
+            required
+            class="w-full p-2 shadow-md rounded-md bg-green-200"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="user_password" class="text-neutral-700 font-bold"
+            >Password:
+          </label>
+          <input
+            type="password"
+            required
+            class="w-full p-2 shadow-md rounded-md bg-green-200"
+          />
+        </div>
+
+        <div class="flex justify-end pt-5">
+          <button
+            type="submit"
+            class="w-25 h-10 cursor-pointer bg-green-200 font-bold
+            rounded-md shadow-md"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+      <a
+        href="/register"
+        class="text-center block text-neutral-500 hover:text-neutral-900 transition ease-in-out duration-200 pt-2 text-xs hover:underline"
+        >Register here</a
+      >
+    </div>
+  </section>
+</Layout>
