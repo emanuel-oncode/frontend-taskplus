@@ -1,60 +1,98 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import User from "@/assets/User.svg";
 ---
 
 <Layout title="Login">
-  <section class="w-full h-screen flex items-center">
+  <section class="w-full h-screen flex items-center wallpaper">
     <div
-      class="w-full min-h-125 bg-green-300 max-w-xl mx-auto shadow-xl
-      rounded-2xl flex flex-col justify-around p-10"
+      class="w-full min-h-140 backdrop-blur-md max-w-xl border border-white mx-auto shadow-xl
+      rounded-3xl flex flex-col justify-center p-10 text-white"
     >
-      <h1 class="text-center text-5xl font-bold">Login</h1>
+      <h1 class="text-center text-5xl mb-5 font-bold">Login</h1>
       <form
         action="http://localhost:3000/api/auth/login"
-        action="POST"
+        id="form-login"
         class="h-full overflow-hidden flex flex-col justify-center
-      gap-4 py-10 px-2 border-b-2 border-neutral-700"
+      gap-10 py-10 px-2"
       >
-        <div class="flex flex-col gap-1">
-          <label for="user_email" class="text-neutral-700 font-bold"
-            >Email:
-          </label>
-          <input
-            type="email"
-            name="userEmail"
-            required
-            class="w-full p-2 shadow-md rounded-md bg-green-200"
-          />
-        </div>
+        <input
+          type="email"
+          id="userEmail"
+          placeholder="Email"
+          required
+          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+        />
 
-        <div class="flex flex-col gap-1">
-          <label for="user_password" class="text-neutral-700 font-bold"
-            >Password:
-          </label>
-          <input
-            type="password"
-            name="userPassword"
-            required
-            class="w-full p-2 shadow-md rounded-md bg-green-200"
-          />
-        </div>
+        <input
+          type="password"
+          id="userPassword"
+          placeholder="Password"
+          required
+          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+        />
 
-        <div class="flex justify-end pt-5">
-          <button
-            type="submit"
-            class="w-25 h-10 cursor-pointer bg-green-200 font-bold
-            rounded-md shadow-md"
-          >
-            Login
-          </button>
-        </div>
+        <button
+          type="submit"
+          class="w-full h-12 cursor-pointer bg-green-100 hover:bg-green-200 border border-white text-black font-bold
+            rounded-md shadow-md transition ease duration-200"
+        >
+          Login
+        </button>
       </form>
       <a
         href="/register"
-        class="text-center text-neutral-500 hover:text-neutral-900 transition ease-in-out duration-200 pt-2 text-xs hover:underline"
+        class="text-center text-neutral-50 hover:text-neutral-100 transition ease-in-out duration-200 pt-2 text-xs"
       >
         Register here
       </a>
     </div>
   </section>
 </Layout>
+
+<script>
+  const form = document.getElementById("form-login");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const emailInput = document.getElementById("userEmail") as HTMLInputElement;
+    const passwordInput = document.getElementById(
+      "userPassword",
+    ) as HTMLInputElement;
+
+    const userEmail = emailInput.value;
+    const userPassword = passwordInput.value;
+
+    try {
+      const res = await fetch("http://localhost:1234/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ userEmail, userPassword }),
+      });
+
+      alert("asta aca todo bien");
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message || "Error al iniciar sesión");
+        return;
+      }
+
+      window.location.href = "/";
+    } catch (error) {}
+  });
+</script>
+
+<style>
+  .wallpaper {
+    background-image: url("./fondo.webp");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    object-fit: cover;
+  }
+</style>
