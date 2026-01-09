@@ -10,6 +10,7 @@ import Layout from "@layouts/Layout.astro";
     >
       <h1 class="text-center text-5xl font-bold">Login</h1>
       <form
+        action="http://localhost:3000/api/auth/login"
         action="POST"
         class="h-full overflow-hidden flex flex-col justify-center
       gap-4 py-10 px-2 border-b-2 border-neutral-700"
@@ -20,6 +21,7 @@ import Layout from "@layouts/Layout.astro";
           </label>
           <input
             type="email"
+            name="userEmail"
             required
             class="w-full p-2 shadow-md rounded-md bg-green-200"
           />
@@ -31,6 +33,7 @@ import Layout from "@layouts/Layout.astro";
           </label>
           <input
             type="password"
+            name="userPassword"
             required
             class="w-full p-2 shadow-md rounded-md bg-green-200"
           />
@@ -48,9 +51,10 @@ import Layout from "@layouts/Layout.astro";
       </form>
       <a
         href="/register"
-        class="text-center block text-neutral-500 hover:text-neutral-900 transition ease-in-out duration-200 pt-2 text-xs hover:underline"
-        >Register here</a
+        class="text-center text-neutral-500 hover:text-neutral-900 transition ease-in-out duration-200 pt-2 text-xs hover:underline"
       >
+        Register here
+      </a>
     </div>
   </section>
 </Layout>
