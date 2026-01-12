@@ -3,9 +3,12 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="register">
-  <section>
-    <div>
-      <h1>Registrate!</h1>
+  <section class="w-full py-5 flex items-center wallpaper">
+    <div
+      class="w-full min-h-140 backdrop-blur-md max-w-xl border border-white mx-auto shadow-xl
+      rounded-3xl flex flex-col justify-center p-10 text-white"
+    >
+      <h1 class="text-center text-5xl mb-5 font-bold">Registrate!</h1>
       <form
         id="register"
         class="h-full overflow-hidden flex flex-col justify-center
@@ -35,13 +38,16 @@ import Layout from "@/layouts/Layout.astro";
           class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
         />
 
-        <input
-          type="date"
-          id="birthdate"
-          placeholder="birthdate"
-          required
-          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
-        />
+        <div>
+          <label for="birthdate" class="p-2 text-neutral-500">Birthdate:</label>
+          <input
+            type="date"
+            id="birthdate"
+            placeholder="birthdate"
+            required
+            class="w-full p-2 border-b text-neutral-500 border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+          />
+        </div>
 
         <input
           type="password"
@@ -62,3 +68,12 @@ import Layout from "@/layouts/Layout.astro";
     </div>
   </section>
 </Layout>
+
+<style>
+  .wallpaper {
+    background-image: url("./fondo.webp");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    object-fit: cover;
+  }
+</style>
