@@ -1,0 +1,64 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="register">
+  <section>
+    <div>
+      <h1>Registrate!</h1>
+      <form
+        id="register"
+        class="h-full overflow-hidden flex flex-col justify-center
+      gap-10 py-10 px-2"
+      >
+        <input
+          type="email"
+          id="userEmail"
+          placeholder="Email"
+          required
+          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+        />
+
+        <input
+          type="text"
+          id="userName"
+          placeholder="Name"
+          required
+          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+        />
+
+        <input
+          type="text"
+          id="userLastName"
+          placeholder="Last Name"
+          required
+          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+        />
+
+        <input
+          type="date"
+          id="birthdate"
+          placeholder="birthdate"
+          required
+          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+        />
+
+        <input
+          type="password"
+          id="userPassword"
+          placeholder="Password"
+          required
+          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+        />
+
+        <button
+          type="submit"
+          class="w-full h-12 cursor-pointer bg-green-100 hover:bg-green-200 border border-white text-black font-bold
+            rounded-md shadow-md transition ease duration-200"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>
