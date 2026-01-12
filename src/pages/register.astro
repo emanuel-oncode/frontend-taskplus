@@ -14,34 +14,41 @@ import Layout from "@/layouts/Layout.astro";
         class="h-full overflow-hidden flex flex-col justify-center
       gap-10 py-10 px-2"
       >
-        <input
-          type="email"
-          id="userEmail"
-          placeholder="Email"
-          required
-          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
-        />
+        <div>
+          <input
+            type="email"
+            id="userEmail"
+            placeholder="Email"
+            required
+            class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+          />
+        </div>
 
-        <input
-          type="text"
-          id="userName"
-          placeholder="Name"
-          required
-          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
-        />
+        <div>
+          <input
+            type="text"
+            id="userName"
+            placeholder="Name"
+            required
+            class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+          />
+        </div>
 
-        <input
-          type="text"
-          id="userLastName"
-          placeholder="Last Name"
-          required
-          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
-        />
+        <div>
+          <input
+            type="text"
+            id="userLastName"
+            placeholder="Last Name"
+            required
+            class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+          />
+        </div>
 
         <div>
           <label for="birthdate" class="p-2 text-neutral-500">Birthdate:</label>
           <input
             type="date"
+            max="2026-01-12"
             id="birthdate"
             placeholder="birthdate"
             required
@@ -49,13 +56,15 @@ import Layout from "@/layouts/Layout.astro";
           />
         </div>
 
-        <input
-          type="password"
-          id="userPassword"
-          placeholder="Password"
-          required
-          class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
-        />
+        <div>
+          <input
+            type="password"
+            id="userPassword"
+            placeholder="Password"
+            required
+            class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+          />
+        </div>
 
         <button
           type="submit"
