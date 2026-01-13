@@ -82,9 +82,69 @@ import Layout from "@/layouts/Layout.astro";
       >
         Do you already have an account? Log in
       </a>
+      <div id="messageError"></div>
     </div>
   </section>
 </Layout>
+
+<script>
+  const form = document.getElementById("register");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("userEmail") as HTMLInputElement;
+    const userEmail = email.value;
+
+    const name = document.getElementById("userName") as HTMLInputElement;
+    const userName = name.value;
+
+    const lastName = document.getElementById(
+      "userLastName",
+    ) as HTMLInputElement;
+    const userLastName = lastName.value;
+
+    const birthdate = document.getElementById("birthdate") as HTMLInputElement;
+    const userBirthdate = birthdate.value;
+
+    const password = document.getElementById(
+      "userPassword",
+    ) as HTMLInputElement;
+    const userPassword = password.value;
+
+    try {
+      const req = await fetch("http://localhost:1234/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          userName,
+          userLastName,
+          userBirthdate,
+          userEmail,
+          userPassword,
+        }),
+      });
+
+      if (!req.ok) {
+        const errorText = await req.text();
+        const messageContainer = document.getElementById("messageError");
+
+        if (messageContainer) {
+          const errorData = JSON.parse(errorText);
+          messageContainer.innerHTML = `<p class="text-red-600 font-bold">${errorData.message}</p>`;
+        }
+      }
+
+      const result = await req.json();
+      alert(JSON.stringify(result));
+    } catch (error) {
+      console.error("Error completo:", error);
+    }
+  });
+</script>
 
 <style>
   .wallpaper {
