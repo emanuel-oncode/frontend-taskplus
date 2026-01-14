@@ -1,7 +1,53 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import ClipboardText from "@/assets/ClipboardText.svg";
+import Search from "@/assets/Search.svg";
+import CalendarEvent from "@/assets/CalendarEvent.svg";
+import Paperclip from "@/assets/Paperclip.svg";
+import ClipboardCheck from "@/assets/ClipboardCheck.svg";
 ---
 
 <Layout title="index">
-  <h1>Task</h1>
+  <div class="w-full h-screen grid grid-cols-10 grid-rows-10">
+    <nav
+      class="col-span-2 row-span-10 overflow-hidden
+      flex flex-col px-5 py-3 bg-red-100 botder"
+    >
+      <a href="/" class="text-4xl font-bold">TaskPlus+</a>
+      <ul class="h-full flex flex-col justify-center gap-5 text-blue-600">
+        <li>
+          <a class="flex items-center gap-2" href="#"><Search />Buscar Tareas</a
+          >
+        </li>
+        <li>
+          <a class="flex items-center gap-2" href="#"
+            ><ClipboardText />Crear Tarea</a
+          >
+        </li>
+        <li>
+          <a class="flex items-center gap-2" href="#"
+            ><CalendarEvent />Calendario</a
+          >
+        </li>
+        <li>
+          <a class="flex items-center gap-2" href="#"
+            ><Paperclip /> Tareas Incompletas</a
+          >
+        </li>
+        <li>
+          <a class="flex items-center gap-2" href="#"
+            ><ClipboardCheck /> Tareas Copletadas</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <main
+      class="col-span-8 row-span-8 col-start-3 row-start-1 overflow-hidden border"
+    >
+    </main>
+    <footer
+      class="col-span-10 row-span-2 col-start-3 row-start-9 overflow-hidden border"
+    >
+    </footer>
+  </div>
 </Layout>
