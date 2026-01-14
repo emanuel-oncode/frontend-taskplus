@@ -136,6 +136,8 @@ import Layout from "@/layouts/Layout.astro";
           const errorData = JSON.parse(errorText);
           messageContainer.innerHTML = `<p class="text-red-600 font-bold">${errorData.message}</p>`;
         }
+
+        return;
       }
 
       const result = await req.json();
