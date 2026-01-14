@@ -15,12 +15,12 @@ export const Navar = () => {
   console.log(menu);
 
   return (
-    <nav className="relative ">
+    <nav className="relative">
       <button onClick={() => setMenu(!menu)} className="cursor-pointer">
         {menu ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
       {menu && (
-        <ul className=" h-dvh p-5 w-xs flex flex-col gap-5 absolute top-11 -right-5 bg-[#47FDB4]">
+        <ul className="h-125 p-5 w-xs flex flex-col gap-5 absolute top-11 -right-5 bg-[#ff0000]">
           <li>
             <a
               className="flex items-center gap-2 hover:text-[#3B5140] transition ease duration-200"

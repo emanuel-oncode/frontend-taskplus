@@ -4,24 +4,11 @@ import { Navar } from "@/components/React/Navar";
 ---
 
 <Layout title="index">
-  <div
-    class="w-full h-screen flex flex-col md:grid md:grid-cols-10 md:grid-rows-10"
+  <header
+    class="flex justify-between items-center gap-10 px-5 py-3 bg-[#47FDB4] text-[#19291B] botder"
   >
-    <header
-      class="md:col-span-2 md:row-span-10 md:overflow-hidden
-      flex justify-between items-center gap-10 px-5 py-3 bg-[#47FDB4] text-[#19291B] botder"
-    >
-      <a href="/" class="text-4xl font-bold">TaskPlus+</a>
+    <a href="/" class="text-4xl font-bold">TaskPlus+</a>
 
-      <Navar client:load />
-    </header>
-    <main
-      class="md:col-span-8 md:row-span-8 md:col-start-3 md:row-start-1 md:overflow-hidden border"
-    >
-    </main>
-    <footer
-      class="md:col-span-10 md:row-span-2 md:col-start-3 md:row-start-9 md:overflow-hidden border"
-    >
-    </footer>
-  </div>
+    <Navar client:load />
+  </header>
 </Layout>
