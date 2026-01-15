@@ -1,14 +1,14 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import { Navar } from "@/components/React/Navar";
+import { MapTask } from "@/components/React/MapTask";
+import App from "@/layouts/App.astro";
 ---
 
-<Layout title="index">
-  <header
-    class="flex justify-between items-center gap-10 px-5 py-3 bg-[#47FDB4] text-[#19291B] botder"
-  >
-    <a href="/" class="text-4xl font-bold">TaskPlus+</a>
-
-    <Navar client:load />
-  </header>
-</Layout>
+<App title="index">
+  <h1>Resumen</h1>
+  <section>
+    <header>
+      <h2>Tareas</h2>
+    </header>
+    <MapTask client:load />
+  </section>
+</App>
