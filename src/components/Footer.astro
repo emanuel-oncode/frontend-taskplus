@@ -1,0 +1,13 @@
+---
+import { Navar } from "./React/Navar";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<footer class={className}>
+  <Navar client:load />
+</footer>
