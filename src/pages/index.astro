@@ -5,9 +5,9 @@ import App from "@/layouts/App.astro";
 
 <App title="index">
   <h1>Resumen</h1>
-  <section>
+  <section class="flex flex-col gap-5 px-5">
     <header>
-      <h2>Tareas</h2>
+      <h2 class="text-5xl font-bold text-center">Tareas</h2>
     </header>
     <MapTask client:load />
   </section>
