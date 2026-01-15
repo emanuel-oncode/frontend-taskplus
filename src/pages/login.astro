@@ -72,7 +72,9 @@ import Layout from "@layouts/Layout.astro";
         body: JSON.stringify({ userEmail, userPassword }),
       });
 
-      alert("asta aca todo bien");
+      console.log("Status:", res.status);
+      console.log("Headers:", [...res.headers.entries()]);
+      console.log("Cookies después del login:", document.cookie);
 
       const data = await res.json();
 
@@ -82,7 +84,10 @@ import Layout from "@layouts/Layout.astro";
       }
 
       window.location.href = "/";
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error en login:", error);
+      alert("Error al conectar con el servidor");
+    }
   });
 </script>
 
