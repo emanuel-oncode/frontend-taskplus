@@ -1,0 +1,53 @@
+<form id="create-task" class="w-full max-w-md mx-auto md:max-w-4xl">
+  <input
+    placeholder="Titulo"
+    type="text"
+    class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+    id="title-task"
+  />
+  <input
+    placeholder="contenido"
+    type="text"
+    class="w-full p-2 border-b border-white focus:bg-neutral-400/30 focus:outline-0 rounded-t-md transition ease duration-200"
+    id="content-task"
+  />
+  <button
+    type="submit"
+    class="w-full h-12 cursor-pointer bg-green-100 hover:bg-green-200 border border-white text-black font-bold rounded-md shadow-md transition ease duration-200"
+    >Crear Tarea</button
+  >
+</form>
+
+<script>
+  const form = document.getElementById("create-task");
+
+  form?.addEventListener("submit", async (e) => {
+    const title = document.getElementById("title-task") as HTMLInputElement;
+    const titleTask = title.value;
+
+    const content = document.getElementById("content-task") as HTMLInputElement;
+    const contentTask = content.value;
+
+    try {
+      const res = await fetch("http://localhost:1234/user/task/createTask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          task_title: titleTask,
+          task_description: contentTask,
+          task_completed: false,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message || "Error al crear la tarea");
+        return;
+      }
+    } catch (error) {}
+  });
+</script>
