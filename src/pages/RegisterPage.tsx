@@ -1,6 +1,6 @@
 import { Calendar, Lock, Mail, User } from "lucide-react";
 
-function LoginPage() {
+function RegisterPage() {
   return (
     <section className="w-full min-h-screen flex items-center">
       <div className="min-h-screen w-full bg-black fixed top-0 left-0 -z-1">
@@ -24,7 +24,7 @@ function LoginPage() {
         </div>
 
         <form className=" h-150 flex flex-col gap-2 py-20 px-8 mx-auto bg-white">
-          <h1 className="text-4xl text-center mb-20">¡Registrate!</h1>
+          <h1 className="text-4xl text-center font-bold mb-20">¡Registrate!</h1>
 
           {/* User Name */}
           <div className="w-full flex gap-2 items-start">
@@ -81,7 +81,8 @@ function LoginPage() {
 
           <button
             type="submit"
-            className="w-full p-4 bg-blue-300 mt-10 rounded-xl border cursor-pointer hover:bg-blue-400 transition ease duration-300"
+            className="w-full p-4 bg-neutral-950 text-white font-bold mt-10 rounded-full cursor-pointer hover:bg-neutral-900 
+            transition ease-in-out duration-200"
           >
             Registrarse
           </button>
@@ -91,4 +92,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
