@@ -28,7 +28,7 @@ function RegisterPage() {
 
           {/* User Name */}
           <div className="w-full flex gap-2 items-start">
-            <div className="w-full flex gap-2 items-center border-b border-cyan-300 p-2 bg-white">
+            <div className="w-full flex gap-2 items-center border-b rounded-md border-cyan-300 p-2 bg-neutral-200">
               <div>
                 <User className="w-5 h-5" />
               </div>
@@ -38,7 +38,7 @@ function RegisterPage() {
                 className="w-full  focus:outline-none"
               />
             </div>
-            <div className="w-full flex gap-2 items-center border-b border-cyan-300 p-2 bg-white">
+            <div className="w-full flex gap-2 items-center border-b rounded-md border-cyan-300 p-2 bg-neutral-200">
               <div>
                 <User className="w-5 h-5" />
               </div>
@@ -50,7 +50,7 @@ function RegisterPage() {
             </div>
           </div>
 
-          <div className="w-full flex gap-2 items-center border-b border-cyan-300 p-2 bg-white">
+          <div className="w-full flex gap-2 items-center border-b rounded-md border-cyan-300 p-2 bg-neutral-200">
             <div>
               <Mail className="w-5 h-5" />
             </div>
@@ -61,7 +61,7 @@ function RegisterPage() {
             />
           </div>
 
-          <div className="w-full flex gap-2 items-center border-b border-cyan-300 p-2 bg-white">
+          <div className="w-full flex gap-2 items-center border-b rounded-md border-cyan-300 p-2 bg-neutral-200">
             <div>
               <Lock className="w-5 h-5" />
             </div>
@@ -72,7 +72,7 @@ function RegisterPage() {
             />
           </div>
 
-          <div className="w-full flex gap-2 items-center border-b border-cyan-300 p-2 bg-white">
+          <div className="w-full flex gap-2 items-center border-b rounded-md border-cyan-300 p-2 bg-neutral-200">
             <div>
               <Calendar className="w-5 h-5" />
             </div>
@@ -81,8 +81,7 @@ function RegisterPage() {
 
           <button
             type="submit"
-            className="w-full p-4 bg-neutral-950 text-white font-bold mt-10 rounded-full cursor-pointer hover:bg-neutral-900 
-            transition ease-in-out duration-200"
+            className="w-full p-4 bg-neutral-950 text-white font-bold mt-10 rounded-full cursor-pointer hover:bg-neutral-900 transition ease-in-out duration-200"
           >
             Registrarse
           </button>
