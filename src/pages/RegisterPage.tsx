@@ -1,6 +1,69 @@
+import { useState } from "react";
 import { Calendar, Lock, Mail, User } from "lucide-react";
+// import { Navigate } from "react-router-dom";
+
+// userName, userLastName, userBirthdate, userEmail, userPassword
+
+interface User {
+  userName: string;
+  userLastName: string;
+  userEmail: string;
+  userPassword: string;
+  userBirthdate: Date;
+}
 
 function RegisterPage() {
+  const [formData, setFormData] = useState<User>({
+    userName: "",
+    userLastName: "",
+    userEmail: "",
+    userPassword: "",
+    userBirthdate: new Date(),
+  });
+
+  async function postRegister(URL: RequestInfo | URL, data: User) {
+    try {
+      const res = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to register user");
+      }
+    } catch (error) {
+      console.error("Error registering user:", error);
+    }
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    alert(`Usuario ${formData.userName} registrado`);
+
+    postRegister("http://localhost:1234/user/register", formData);
+
+    setFormData({
+      userName: "",
+      userLastName: "",
+      userEmail: "",
+      userPassword: "",
+      userBirthdate: new Date(),
+    });
+
+    // Navigate("/login");
+  }
+
   return (
     <section className="w-full min-h-screen flex items-center">
       <div className="min-h-screen w-full bg-black fixed top-0 left-0 -z-1">
@@ -23,10 +86,14 @@ function RegisterPage() {
           </p>
         </div>
 
-        <form className=" h-150 flex flex-col gap-2 py-20 px-8 mx-auto bg-white">
+        <form
+          onSubmit={handleSubmit}
+          className=" h-150 flex flex-col gap-2 py-20 px-8 mx-auto bg-white"
+          id="register-form"
+        >
           <h1 className="text-4xl text-center font-bold mb-20">¡Registrate!</h1>
 
-          {/* User Name */}
+          {/* User Name and Last Name*/}
           <div className="w-full flex gap-2 items-start">
             <div className="w-full flex gap-2 items-center border-b rounded-md border-cyan-300 p-2 bg-neutral-200">
               <div>
@@ -34,6 +101,9 @@ function RegisterPage() {
               </div>
               <input
                 type="text"
+                name="userName"
+                value={formData.userName}
+                onChange={handleChange}
                 placeholder="User Name"
                 className="w-full  focus:outline-none"
               />
@@ -44,6 +114,9 @@ function RegisterPage() {
               </div>
               <input
                 type="text"
+                name="userLastName"
+                value={formData.userLastName}
+                onChange={handleChange}
                 placeholder="Last Name"
                 className="w-full  focus:outline-none"
               />
@@ -56,6 +129,9 @@ function RegisterPage() {
             </div>
             <input
               type="email"
+              name="userEmail"
+              value={formData.userEmail}
+              onChange={handleChange}
               placeholder="Email"
               className="w-full focus:outline-none"
             />
@@ -67,6 +143,9 @@ function RegisterPage() {
             </div>
             <input
               type="password"
+              name="userPassword"
+              value={formData.userPassword}
+              onChange={handleChange}
               placeholder="password"
               className="w-full focus:outline-none"
             />
@@ -76,7 +155,13 @@ function RegisterPage() {
             <div>
               <Calendar className="w-5 h-5" />
             </div>
-            <input type="date" className="w-full focus:outline-none" />
+            <input
+              type="date"
+              name="userBirthdate"
+              value={formData.userBirthdate.toString()}
+              onChange={handleChange}
+              className="w-full focus:outline-none"
+            />
           </div>
 
           <button
