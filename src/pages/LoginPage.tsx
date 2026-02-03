@@ -3,13 +3,15 @@ import { useState } from "react";
 
 function LoginPage() {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    userEmail: "",
+    userPassword: "",
   });
+
+  const [messageError, setMessageError] = useState("");
 
   async function loginFetch(
     URL: RequestInfo | URL,
-    data: { email: string; password: string },
+    data: { userEmail: string; userPassword: string },
   ) {
     const res = await fetch(URL, {
       method: "POST",
@@ -17,9 +19,19 @@ function LoginPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
+      credentials: "include",
     });
 
     const result = await res.json();
+
+    if (result.success) {
+      console.log("Login exitoso:", result);
+      // Aquí rediriges al usuario o actualizas el contexto global
+      window.location.href = "/HomePage";
+    } else {
+      console.error("Error en login:", result.message);
+      setMessageError(result.message);
+    }
 
     console.log(result);
   }
@@ -51,10 +63,10 @@ function LoginPage() {
             </div>
             <input
               type="email"
-              id="email"
-              name="email"
+              id="userEmail"
+              name="userEmail"
               placeholder="Email"
-              value={formData.email}
+              value={formData.userEmail}
               onChange={handleInputChange}
               className="w-full  focus:outline-none"
             />
@@ -65,10 +77,10 @@ function LoginPage() {
             </div>
             <input
               type="password"
-              id="password"
-              name="password"
+              id="userPassword"
+              name="userPassword"
               placeholder="Password"
-              value={formData.password}
+              value={formData.userPassword}
               onChange={handleInputChange}
               className="w-full  focus:outline-none"
             />
@@ -76,6 +88,11 @@ function LoginPage() {
           <button className="w-full bg-cyan-500 text-white py-2 px-4 rounded-md hover:bg-cyan-600 transition-colors text-center cursor-pointer">
             Iniciar Sesión
           </button>
+          <div>
+            {messageError && (
+              <p className="text-red-500 text-sm text-center">{messageError}</p>
+            )}
+          </div>
         </form>
       </div>
     </section>
