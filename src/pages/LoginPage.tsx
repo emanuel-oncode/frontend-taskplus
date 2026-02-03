@@ -26,7 +26,6 @@ function LoginPage() {
 
     if (result.success) {
       console.log("Login exitoso:", result);
-      // Aquí rediriges al usuario o actualizas el contexto global
       window.location.href = "/HomePage";
     } else {
       console.error("Error en login:", result.message);
